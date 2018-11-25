@@ -1,7 +1,4 @@
-<p>
-    <strong>Name:</strong>
-    <%= card.name %>
-</p>
+<h4><%= card.name %></h4>
 
 <% unless locals[:show] %>
     <p>
@@ -10,15 +7,15 @@
     </p>
 <% end %>
 
-<p>
-    <strong>Date IN:</strong>
-    <%= card.dateIn %>
-</p>
+<div class="date-card">
+    <p class="date-card-in">
+        <%= card.dateIn %>
+    </p>
 
-<p>
-    <strong>Date OUT:</strong>
-    <%= card.dateOut %>
-</p>
+    <p class="date-card-out">
+        <%= card.dateOut %>
+    </p>
+</div>
 
 <% unless locals[:show] %>
     <p>
@@ -28,7 +25,7 @@
 <% end %>
 
 <p>
-    <%= link_to 'Editar', edit_project_card_path(card.project, card) %> |
+    <%= linkx_to 'Editar', edit_project_card_path(card.project, card) %> |
     <%= link_to 'Ver', [card.project, card] %>
 </p>
 

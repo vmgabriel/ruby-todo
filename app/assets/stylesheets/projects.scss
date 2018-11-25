@@ -1,3 +1,263 @@
 // Place all the styles related to the Projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.content {
+    background-color: #FFF;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin: 3em 25em 3em 25em;
+    padding-top: 1em;
+    padding-bottom: 3em;
+    opacity: 0.7;
+
+    text-align: center;
+}
+
+.content_bar {
+    margin: 3em 15em 3em 15em;
+    display: flex;
+    justify-content: space-around;
+}
+
+.lists {
+    flex-direction: row;
+}
+
+.box_card {
+    width: 33%;
+
+    h3 {
+        font-size: 2em;
+        text-size: 27px;
+    }
+
+    .card:last-child {
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .card:nth-child(2n+1) {
+        background-color: #333;
+
+        border-right: 1px;
+        border-left: 1px;
+        color: #FFF;
+
+        a {
+            color: #FFF;
+            &:hover {
+                color: #FFF;
+            }
+        }
+
+        &:hover {
+            background-color: #A0A0A0;
+            color: #333;
+            a {
+                color: #FFF;
+            }
+        }
+    }
+
+    .card:first-of-type {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+}
+
+.card {
+    border: 1px solid;
+    margin-left: 1em;
+    margin-right:1em;
+    margin-bottom: 0;
+    margin-top: 0;
+
+    background-color: grey;
+
+    a {
+        border: 0;
+    }
+}
+
+.content_card {
+
+    .title_card {
+        text-align: left;
+        margin-left: 1em;
+        font-size: 20px;
+    }
+
+    .date_card {
+        display: flex;
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+        justify-content: space-between;
+        font-style: italic;
+    }
+}
+
+.button_content {
+    background-color: #bec3a4;
+
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.button_bar_content {
+    background-color: #bec3a4;
+
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+
+    margin-left: 2em;
+    margin-right: 2em;
+
+    display: flex;
+    justify-content: space-around;
+}
+
+.content_project {
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-top: 1em;
+    border-radius: 10px;
+
+    a {
+        border: 0;
+    }
+
+    h2 {
+        text-align: left;
+        font-size: 2em;
+        margin-left: 1em;
+    }
+
+    p {
+        text-align: right;
+        font-size: 1em;
+        margin-right: 1em;
+    }
+}
+
+.bar_buttons {
+    display: flex;
+    border: 1px solid;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+    align-items: stretch;
+    justify-content: space-around;
+}
+
+.link_bar {
+    width: 100%;
+    padding-bottom: 0.5em;
+    font-size: 16px;
+    padding-top: 0.5em;
+    color: #FFF;
+}
+
+.middle_bar_letter {
+    &:hover {
+        color: #FFF;
+        a:hover {
+            color: #FFF;
+        }
+    }
+}
+
+.left_border_radious {
+    border-radius: 0 0 0 10px;
+}
+
+.right_border_radious {
+    border-radius: 0 0 10px 0;
+}
+
+.top_margin_button {
+    margin-top: 1em;
+}
+
+.execute_project {
+    background-color: #5f864f;
+}
+
+.archived_project {
+    background-color: #b4c069;
+}
+
+.finish_project {
+    background-color: #a9a9a9;
+}
+
+.edit_color {
+    background-color: #4d4681;
+}
+
+.delete_color {
+    background-color: #864f60;
+}
+
+.back_color {
+    background-color: #403f39;
+}
+
+
+# New Project
+
+@media only screen and (max-width: 300px ) {
+    .content {
+        margin: 3em 3em 3em 3em;
+    }
+
+    .lists {
+        flex-direction: column;
+    }
+
+    .box_card {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 301px ) and (max-width: 600px ) {
+    .content {
+        margin: 3em 3em 3em 3em;
+    }
+
+    .lists {
+        flex-direction: column;
+    }
+
+    .box_card {
+        width: 100%;
+    }
+}
+
+
+@media only screen and (min-width: 601px ) and (max-width: 900px ) {
+    .content {
+        margin: 3em 7em 3em 7em;
+    }
+
+    .lists {
+        flex-wrap: wrap;
+    }
+
+    .box_card {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 901px ) and(max-width: 1200px ) {
+    .content {
+        margin: 3em 13em 3em 13em;
+    }
+}

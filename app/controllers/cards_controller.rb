@@ -37,10 +37,17 @@ class CardsController < ApplicationController
   # PATCH/PUT /cards/1
   # PATCH/PUT /cards/1.json
   def update
-    if @project.cards.update(set_params)
+    if params[:state] == "0" or params[:state] == "1" or params[:state] == "2"
+      @card.state = params[:state]
+      @card.update
       redirect_to project_path(@project)
     else
-      render 'edit'
+      params_edit = set_params card_params
+      if @project.cards.update(params_edit)
+        redirect_to project_path(@project)
+      else
+        render 'edit'
+      end
     end
   end
 
@@ -58,7 +65,7 @@ class CardsController < ApplicationController
       @card = @project.cards.find(params[:id])
     end
 
-    def set_params
+    def set_params(card_params)
       params = {}
       params["dateIn"] = Time.utc(card_params["dateIn(1i)"],
                                   card_params["dateIn(2i)"],

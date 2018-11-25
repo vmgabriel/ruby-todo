@@ -1,39 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Projects</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>State</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="content">
+    <div class="title_content">
+        <h1>Project Manager</h1>
+        <h4>Gabriel Vargas Monroy</h4>
+    </div>
+    <%= link_to 'New Project', new_project_path, :class => "button_content" %>
+</div>
 
-  <tbody>
+<div class="content">
     <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.name %></td>
-        <td>
-            <% if project.state == 0 %>
-                Executing
-            <% end %>
-            <% if project.state == 1 %>
-                Archived
-            <% end %>
-            <% if project.state == 2 %>
-                Finish
-            <% end %>
-        </td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <% if project.state == 0 %>
+            <div class="content_project execute_project">
+                <%= render project %>
+            </div>
+        <% end %>
+        <% if project.state == 1 %>
+            <div class="content_project archived_project">
+                <%= render project %>
+            </div>
+        <% end %>
+        <% if project.state == 2 %>
+            <div class="content_project finish_project">
+                <%= render project %>
+            </div>
+        <% end %>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Project', new_project_path %>
+</div>

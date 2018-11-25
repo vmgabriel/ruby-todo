@@ -1,50 +1,63 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
-
-<p>
-    <strong>State:</strong>
-    <% if @project.state == 0 %>
-        Executing
-    <% end %>
-    <% if @project.state == 1 %>
-        Archived
-    <% end %>
-    <% if @project.state == 2 %>
-        Finish
-    <% end %>
-</p>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
-<p>
-    <%= link_to 'New Card', new_project_card_path(@project) %>
-</p>
-
-<div class="todo_box">
-    <h3>TO DO</h3>
-    <% @project.cards.each do |card| %>
-        <% if card.state == 0 %>
-            <%= render card, locals: {show: true} %>
+<div class="content content_bar">
+    <div class="title_content">
+        <h1><%= @project.name %></h1>
+        <h4>
+            <% if @project.state == 0 %>
+                Executing
+            <% end %>
+            <% if @project.state == 1 %>
+                Archived
+            <% end %>
+            <% if @project.state == 2 %>
+                Finish
+            <% end %>
+        </h4>
+    </div>
+    <div class="button_content button_bar_content">
+        <%= link_to projects_path, :class => "link_bar back_color" do%>
+            Back
         <% end %>
-    <% end %>
+        <%= link_to edit_project_path(@project), :class => "link_bar edit_color" do %>
+            Edit
+        <% end %>
+        <%= link_to @project, method: :delete, data: { confirm: 'Are you sure?' }, :class => "link_bar delete_color" do %>
+            Delete
+        <% end  %>
+    </div>
+    <%= link_to 'New Card', new_project_card_path(@project), :class => "button_content top_margin_button" %>
 </div>
-<div class="doing_box">
-    <h3>DOING</h3>
-    <% @project.cards.each do |card| %>
-        <% if card.state == 1 %>
-            <%= render card, locals: {show: true} %>
+
+<div class="content content_bar lists">
+    <div class="box_card todo_box">
+        <h3>TO DO</h3>
+        <% @project.cards.each do |card| %>
+            <% if card.state == 0 %>
+                <div class="card">
+                    <%= render 'cards/mini-card', locals: {card: card} %>
+                </div>
+            <% end %>
         <% end %>
-    <% end %>
-</div>
-<div class="done_box">
-    <h3>DONE</h3>
-    <% @project.cards.each do |card| %>
-        <% if card.state == 2 %>
-            <%= render card, locals: {show: true} %>
+    </div>
+    <div class="box_card doing_box">
+        <h3>DOING</h3>
+        <% @project.cards.each do |card| %>
+            <% if card.state == 1 %>
+                <div class="card">
+                    <%= render 'cards/mini-card', locals: {card: card} %>
+                </div>
+            <% end %>
         <% end %>
-    <% end %>
+    </div>
+    <div class="box_card done_box">
+        <h3>DONE</h3>
+        <% @project.cards.each do |card| %>
+            <% if card.state == 2 %>
+                <div class="card">
+                    <%= render 'cards/mini-card', locals: {card: card} %>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
 </div>
