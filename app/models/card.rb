@@ -10,8 +10,8 @@ class Card
   field :state, type: Integer
 
   validates :name, length: { minimum: 3 }
-  validate :expiration_date_cannot_be_in_the_past
-  validate :dates_in_order
+  validate :expiration_date_cannot_be_in_the_past, :on => :create
+  validate :dates_in_order, :on => :create
 
   private
     def dates_in_order

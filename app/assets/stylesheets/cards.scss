@@ -1,3 +1,34 @@
 // Place all the styles related to the Cards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+//EDIT
+
+.details_card, .date_card, .state_card {
+    text-align: left;
+    margin-left: 2em;
+    margin-right: 2em;
+    font-size: 18px;
+}
+
+.details_card {
+    strong {
+        margin-bottom: 1em;
+    }
+}
+
+.details_box {
+    margin-top: 7px;
+    margin-left: 1em;
+    margin-right: 1em;
+    background-color: #bec3a4;
+    padding: 10px;
+}
+
+.date_card {
+    margin-top: 0.5em;
+}
+
+.state_card {
+    margin-top: 1em;
+    margin-bottom: 2em;
+}

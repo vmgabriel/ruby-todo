@@ -1,37 +1,69 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @card.name %>
-</p>
+<div class="content data">
+    <h1><%= @card.name %></h1>
 
-<p>
-  <strong>Details:</strong>
-  <%= @card.details %>
-</p>
+    <div class="details_card">
+        <strong>Details:</strong>
+        <div class="details_box">
+            <%= @card.details %>
+        </div>
+    </div>
 
-<p>
-  <strong>Datein:</strong>
-  <%= @card.dateIn %>
-</p>
+    <div class="date_card">
+        <strong>Date Start:</strong>
+        <%= @card.dateIn %>
+    </div>
 
-<p>
-  <strong>Dateout:</strong>
-  <%= @card.dateOut %>
-</p>
+    <div class="date_card">
+        <strong>Date End:</strong>
+        <%= @card.dateOut %>
+    </div>
 
-<p>
-    <strong>State:</strong>
-    <% if @card.state == 0 %>
-        To Do
-    <% end %>
-    <% if @card.state == 1 %>
-        Doing
-    <% end %>
-    <% if @card.state == 2 %>
-        Done
-    <% end %>
-</p>
+    <div class="state_card">
+        <strong>State:</strong>
+        <% if @card.state == 0 %>
+            To Do
+        <% end %>
+        <% if @card.state == 1 %>
+            Doing
+        <% end %>
+        <% if @card.state == 2 %>
+            Done
+        <% end %>
+    </div>
 
-<%= link_to 'Edit', edit_project_card_path(@project, @card) %> |
-<%= link_to 'Back', project_path(@project) %>
+    <div class="bar_buttons button_bar_content">
+        <% if @card.state == 0 %>
+            <%= link_to 'Doing', project_card_path(@card.project, @card,
+                                                   "Nstate": 1), method: :patch,
+                                                   :class => "link_bar execute-project" %>
+            <%= link_to 'Done', project_card_path(@card.project, @card,
+                                                  "Nstate": 2), method: :patch,
+                                                  :class => "link_bar archived_project" %>
+        <% end %>
+        <% if @card.state == 1 %>
+            <%= link_to 'To Do', project_card_path(@card.project, @card,
+                                                   "Nstate": 0), method: :patch,
+                                                   :class => "link_bar edit_color" %>
+            <%= link_to 'Done', project_card_path(@card.project, @card,
+                                                  "Nstate": 2), method: :patch,
+                                                  :class => "link_bar archived_project" %>
+        <% end %>
+        <% if @card.state == 2 %>
+            <%= link_to 'To Do', project_card_path(@card.project, @card,
+                                                   "Nstate": 0), method: :patch,
+                                                   :class => "link_bar edit_color" %>
+            <%= link_to 'Doing', project_card_path(@card.project, @card,
+                                                   "Nstate": 1), method: :patch,
+                                                   :class => "link_bar execute-project" %>
+        <% end %>
+    </div>
+
+    <div class="button_bar_content">
+        <%= link_to 'Back', project_path(@project), :class => "link_bar back_color"%>
+        <%= link_to 'Edit', edit_project_card_path(@project, @card), :class => "link_bar edit_color" %>
+        <%= link_to 'Delete', project_card_path(@project, @card), method: :delete, data: { confirm: 'Are you sure?' },
+        :class => "link_bar delete_color" %>
+    </div>
+</div>

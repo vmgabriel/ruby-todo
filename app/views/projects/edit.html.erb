@@ -1,6 +1,10 @@
-<h1>Editing Project</h1>
+<div class="content">
+    <h1>Editing Project</h1>
 
-<%= render 'form', project: @project %>
+    <div class="button_bar_content">
+        <%= link_to 'Back', projects_path, :class => "link_bar back_color" %>
+        <%= link_to 'Show', @project, :class => "link_bar show_color" %>
+    </div>
 
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+    <%= render 'form', project: @project %>
+</div>

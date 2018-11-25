@@ -1,6 +1,9 @@
-<h1>Editing Card</h1>
+<div class="content">
+    <h1>Editing Card</h1>
+    <div class="button_bar_content">
+        <%= link_to 'Back', project_path(@project), :class => "link_bar back_color" %>
+        <%= link_to 'Show', project_card_path(@project, @card), :class => "link_bar show_color" %>
+    </div>
 
-<%= render 'form'%>
-
-<%= link_to 'Show', project_card_path(@project, @card) %> |
-<%= link_to 'Back', project_path(@project) %>
+    <%= render 'form'%>
+</div>

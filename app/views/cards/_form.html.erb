@@ -1,15 +1,15 @@
 <%= form_for [@project, @card] do |form| %>
-  <% if @card.errors.any? %>
-      <div id="error_explanation">
-          <h2><%= pluralize(@card.errors.count, "error") %> prohibited this card from being saved:</h2>
+    <% if @card.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@card.errors.count, "error") %> prohibited this card from being saved:</h2>
 
-          <ul>
-              <% @card.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-              <% end %>
-          </ul>
-      </div>
-  <% end %>
+            <ul>
+                <% @card.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
 
   <div class="field">
     <%= form.label :name %>
@@ -22,13 +22,17 @@
   </div>
 
   <div class="field">
-    <%= form.label :dateIn %>
-    <%= form.date_select :dateIn %>
+      <%= form.label :dateIn %>
+      <div class="date_inline">
+          <%= form.date_select :dateIn, :class => "date_inline" %>
+      </div>
   </div>
 
   <div class="field">
-    <%= form.label :dateOut %>
-    <%= form.date_select :dateOut %>
+      <%= form.label :dateOut %>
+      <div class="date_inline">
+          <%= form.date_select :dateOut, :class => "date_inline" %>
+      </div>
   </div>
 
   <div class="field">

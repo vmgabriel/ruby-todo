@@ -61,28 +61,85 @@ div {
 }
 
 #error_explanation {
-  width: 450px;
-  border: 2px solid red;
+  width: 100%;
+  border: 2px solid #2c041d;
   padding: 7px 7px 0;
   margin-bottom: 20px;
-  //background-color: #f0f0f0;
+  box-sizing: border-box;
+  background-color: #864f60;
 
   h2 {
     text-align: left;
     font-weight: bold;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
+    padding: 5px 10px 5px 15px;
+    font-size: 16px;
     margin: -7px -7px 0;
-    //background-color: #c00;
     color: #fff;
+    margin-top: 1em;
   }
 
   ul li {
-    font-size: 12px;
+    font-size: 14px;
     list-style: square;
+    color: a9a9a9;
   }
 }
 
 label {
   display: block;
+}
+
+
+//Forms
+
+.field_with_errors {
+    width: 100%;
+    box-sizing: border-box;
+
+    label {
+        color: red;
+    }
+
+    input {
+        border-bottom: 2px solid #2c041d;
+        border-left: 2px solid #2c041d;
+        border-right: 2px solid #2c041d;
+    }
+}
+
+input, select, textarea {
+    width: 100%;
+    margin-top: 0.5em;
+    border-radius: 5px;
+    background-color: #bec3a4;
+    color: #000;
+    border: none;
+    border-bottom: 2px solid #333;
+    padding: 12px 20px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    border-right: 2px solid #333;
+
+    &:hover {
+        background-color: #46814a;
+    }
+}
+
+select {
+    height: 50px;
+}
+
+textarea {
+    height: 200px;
+}
+
+.date_inline {
+    display: flex;
+
+    select:nth-child(2n) {
+        margin-left: 1em;
+        margin-right: 1em;
+    }
 }

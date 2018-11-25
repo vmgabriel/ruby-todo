@@ -4,7 +4,7 @@ class CardsController < ApplicationController
   # GET /cards
   # GET /cards.json
   def index
-    @cards = Card.all
+    redirect_to root_path
   end
 
   # GET /cards/1
@@ -37,13 +37,14 @@ class CardsController < ApplicationController
   # PATCH/PUT /cards/1
   # PATCH/PUT /cards/1.json
   def update
-    if params[:state] == "0" or params[:state] == "1" or params[:state] == "2"
-      @card.state = params[:state]
+    if params[:Nstate] == "0" or params[:Nstate] == "1" or params[:Nstate] == "2"
+      @card.state = params[:Nstate]
       @card.update
       redirect_to project_path(@project)
     else
-      params_edit = set_params card_params
-      if @project.cards.update(params_edit)
+      set_params_object
+      if @card.valid?
+        @project.cards.update(set_params)
         redirect_to project_path(@project)
       else
         render 'edit'
@@ -65,8 +66,9 @@ class CardsController < ApplicationController
       @card = @project.cards.find(params[:id])
     end
 
-    def set_params(card_params)
+    def set_params
       params = {}
+
       params["dateIn"] = Time.utc(card_params["dateIn(1i)"],
                                   card_params["dateIn(2i)"],
                                   card_params["dateIn(3i)"],
@@ -75,14 +77,30 @@ class CardsController < ApplicationController
                                    card_params["dateOut(2i)"],
                                    card_params["dateOut(3i)"],
                                    23, 59, 59).in_time_zone("Bogota").to_json
-      params["name"] = card_params["name"]
-      params["details"] = card_params["details"]
-      params["state"] = card_params["state"]
+
+      params["name"] = card_params[:name]
+      params["details"] = card_params[:details]
+      params["state"] = card_params[:state]
       params
+    end
+
+    def set_params_object
+      @card.dateIn = Time.utc(card_params["dateIn(1i)"],
+                                  card_params["dateIn(2i)"],
+                                  card_params["dateIn(3i)"],
+                                  23, 59, 59).in_time_zone("Bogota")
+      @card.dateOut = Time.utc(card_params["dateOut(1i)"],
+                                   card_params["dateOut(2i)"],
+                                   card_params["dateOut(3i)"],
+                                   23, 59, 59).in_time_zone("Bogota").to_json
+
+      @card.name = card_params[:name]
+      @card.details = card_params[:details]
+      @card.state = card_params[:state]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def card_params
-      params.require(:card).permit(:name, :details, :dateIn, :dateOut, :state)
+      params.require(:card).permit(:name, :details, :dateIn, :dateOut, :state, :Nstate)
     end
 end

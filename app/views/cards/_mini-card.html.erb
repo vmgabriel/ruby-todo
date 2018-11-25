@@ -13,26 +13,26 @@
     <div class="bar_buttons">
         <% if locals[:card].state == 0 %>
             <%= link_to 'Doing', project_card_path(locals[:card].project, locals[:card],
-                                                   "state": 1), method: :patch,
+                                                   "Nstate": 1), method: :patch,
                                                    :class => "link_bar execute-project middle_bar_letter" %>
             <%= link_to 'Done', project_card_path(locals[:card].project, locals[:card],
-                                                  "state": 2), method: :patch,
+                                                  "Nstate": 2), method: :patch,
                                                   :class => "link_bar archived_project middle_bar_letter" %>
         <% end %>
         <% if locals[:card].state == 1 %>
             <%= link_to 'To Do', project_card_path(locals[:card].project, locals[:card],
-                                                   "state": 0), method: :patch,
+                                                   "Nstate": 0), method: :patch,
                                                    :class => "link_bar edit_color middle_bar_letter" %>
             <%= link_to 'Done', project_card_path(locals[:card].project, locals[:card],
-                                                  "state": 2), method: :patch,
+                                                  "Nstate": 2), method: :patch,
                                                   :class => "link_bar archived_project middle_bar_letter" %>
         <% end %>
         <% if locals[:card].state == 2 %>
             <%= link_to 'To Do', project_card_path(locals[:card].project, locals[:card],
-                                                   "state": 0), method: :patch,
+                                                   "Nstate": 0), method: :patch,
                                                    :class => "link_bar edit_color middle_bar_letter" %>
             <%= link_to 'Doing', project_card_path(locals[:card].project, locals[:card],
-                                                   "state": 1), method: :patch,
+                                                   "Nstate": 1), method: :patch,
                                                    :class => "link_bar execute-project middle_bar_letter" %>
         <% end %>
     </div>
