@@ -1,0 +1,38 @@
+<p>
+    <strong>Name:</strong>
+    <%= card.name %>
+</p>
+
+<% unless locals[:show] %>
+    <p>
+        <strong>Details:</strong>
+        <%= card.details %>
+    </p>
+<% end %>
+
+<p>
+    <strong>Date IN:</strong>
+    <%= card.dateIn %>
+</p>
+
+<p>
+    <strong>Date OUT:</strong>
+    <%= card.dateOut %>
+</p>
+
+<% unless locals[:show] %>
+    <p>
+        <strong>State:</strong>
+        <%= card.state %>
+    </p>
+<% end %>
+
+<p>
+    <%= link_to 'Editar', edit_project_card_path(card.project, card) %> |
+    <%= link_to 'Ver', [card.project, card] %>
+</p>
+
+<p>
+    <%= link_to 'Borrar Tarjeta', [card.project, card],
+    method: :delete, data: { confirm: '¿ Estas Seguro ?'} %>
+</p>

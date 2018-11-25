@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  details: MyText
+  dateIn: 2018-11-23
+  dateOut: 2018-11-23
+  state: 1
+  Project: 
+
+two:
+  name: MyString
+  details: MyText
+  dateIn: 2018-11-23
+  dateOut: 2018-11-23
+  state: 1
+  Project: 

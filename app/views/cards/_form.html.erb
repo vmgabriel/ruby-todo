@@ -1,0 +1,41 @@
+<%= form_for [@project, @card] do |form| %>
+  <% if @card.errors.any? %>
+      <div id="error_explanation">
+          <h2><%= pluralize(@card.errors.count, "error") %> prohibited this card from being saved:</h2>
+
+          <ul>
+              <% @card.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+          </ul>
+      </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :details %>
+    <%= form.text_area :details %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dateIn %>
+    <%= form.date_select :dateIn %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dateOut %>
+    <%= form.date_select :dateOut %>
+  </div>
+
+  <div class="field">
+      <%= form.select(:state, [['To Do', 0], ['Doing', 1], ['Done', 2] ]) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

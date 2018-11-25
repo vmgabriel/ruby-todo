@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @card.name %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @card.details %>
+</p>
+
+<p>
+  <strong>Datein:</strong>
+  <%= @card.dateIn %>
+</p>
+
+<p>
+  <strong>Dateout:</strong>
+  <%= @card.dateOut %>
+</p>
+
+<p>
+    <strong>State:</strong>
+    <% if @card.state == 0 %>
+        To Do
+    <% end %>
+    <% if @card.state == 1 %>
+        Doing
+    <% end %>
+    <% if @card.state == 2 %>
+        Done
+    <% end %>
+</p>
+
+<%= link_to 'Edit', edit_project_card_path(@project, @card) %> |
+<%= link_to 'Back', project_path(@project) %>

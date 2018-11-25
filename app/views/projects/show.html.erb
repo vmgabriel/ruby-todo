@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+    <strong>State:</strong>
+    <% if @project.state == 0 %>
+        Executing
+    <% end %>
+    <% if @project.state == 1 %>
+        Archived
+    <% end %>
+    <% if @project.state == 2 %>
+        Finish
+    <% end %>
+</p>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
+<p>
+    <%= link_to 'New Card', new_project_card_path(@project) %>
+</p>
+
+<div class="todo_box">
+    <h3>TO DO</h3>
+    <% @project.cards.each do |card| %>
+        <% if card.state == 0 %>
+            <%= render card, locals: {show: true} %>
+        <% end %>
+    <% end %>
+</div>
+<div class="doing_box">
+    <h3>DOING</h3>
+    <% @project.cards.each do |card| %>
+        <% if card.state == 1 %>
+            <%= render card, locals: {show: true} %>
+        <% end %>
+    <% end %>
+</div>
+<div class="done_box">
+    <h3>DONE</h3>
+    <% @project.cards.each do |card| %>
+        <% if card.state == 2 %>
+            <%= render card, locals: {show: true} %>
+        <% end %>
+    <% end %>
+</div>
